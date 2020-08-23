@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员管理系统-by zero field</title>
+</head>
+<body>
+{#    Hello {{ words }}#}
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} -- {{ student.get_status_display }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/" method="post">
+{#  {% csrf_token %} 是django对提交数据权限性做的校验，如果没有token，提及叫过去的数据是无效的，用来阻止跨站请求伪造的一个手段 #}
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="提交" />
+    </form>
+</body>
+</html>
